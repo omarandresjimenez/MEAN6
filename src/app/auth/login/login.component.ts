@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.isLoading = false;
       }
     );
-    this.oktaLogin();
+    // this.oktaLogin();
   }
 
   oktaLogin() {
@@ -38,10 +38,12 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.token = this.authClient.tokenManager.get('idToken');
     if (this.token) {
+       console.log('OKTA auth OK', this.token, this.authClient);
       // this.isAuthenticated = true;
       // this.username = this.token.claims.email;
     } else {
       // this.isAuthenticated = false;
+      console.log('OKTA NOt authenticated');
     }
   }
 
@@ -52,7 +54,30 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.authService.login(form.value.email, form.value.password);
   }
+  async login(username, password) {
+    let signInResponse: any;
 
+    try {
+      signInResponse = await this.authClient.signIn({ username, password });
+      if (signInResponse.status === 'SUCCESS') {
+        this.token = await this.authClient.token.getWithoutPrompt({
+          sessionToken: signInResponse.sessionToken,
+          responseType: 'id_token',
+          scopes: ['openid', 'email', 'profile']
+        });
+        if (this.token) {
+          this.authClient.tokenManager.add('idToken', this.token);
+          console.log('OKTA auth OK login', this.token);
+          // this.isAuthenticated = true;
+          // this.username = this.token.claims.email;
+        }
+      } else {
+        console.log('OKTAError Login');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
   }

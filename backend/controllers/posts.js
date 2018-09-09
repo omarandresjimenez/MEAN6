@@ -58,7 +58,7 @@ exports.getPosts = (req, res, next) => {
   const pageSize = +req.query.pagesize;
   const currentPage = +req.query.page;
   const postQuery = Post.find();
-  let fetchedPosts;
+  //let fetchedPosts;
   if (pageSize && currentPage) {
     postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
   }
@@ -67,7 +67,8 @@ exports.getPosts = (req, res, next) => {
       fetchedPosts = documents;
       return Post.count();
     })
-    .then(count => {
+    .then((count) => {
+      //console.log(count, documents);
       res.status(200).json({
         message: "Posts fetched successfully!",
         posts: fetchedPosts,
@@ -75,6 +76,7 @@ exports.getPosts = (req, res, next) => {
       });
     })
     .catch(error => {
+      console.log(error);
       res.status(500).json({
         message: "Fetching posts failed!"
       });

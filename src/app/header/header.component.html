@@ -3,6 +3,10 @@
     <a routerLink="/">MyMessages</a>
   </span>
   <span class="spacer"></span>
+  <span>
+    <a routerLink="/statistics">Live Statistics</a>
+  </span>
+  <span class="spacer"></span>
   <ul>
     <li *ngIf="userIsAuthenticated">
       <a mat-button routerLink="/create" routerLinkActive="mat-accent">New Post</a>

@@ -1,0 +1,18 @@
+<div class="container">
+<div class="stats-chart" *ngIf="chartData">
+  <app-chart-line
+  [chartData] = "chartData"
+  [chartOptions] = "chartOptions"
+></app-chart-line>
+
+</div>
+<div class="stats-chart" *ngIf="chartData"> 
+  <app-chart-pie
+  [chartData] = "chartData"
+  [chartOptions] = "chartOptions"
+></app-chart-pie>
+
+</div>
+</div>
+<button mat-raised-button color="accent" type="button" (click)="onClick()">Toogle Coonnection</button>
+

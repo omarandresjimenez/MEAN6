@@ -1,0 +1,17 @@
+.stats-chart {
+    width: 40%;
+    display: block;
+    padding: 50px;
+  }
+  
+  .stats-chart app-chart-line {
+    width: 40%;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  }
+  
+
+  .container {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+  }
