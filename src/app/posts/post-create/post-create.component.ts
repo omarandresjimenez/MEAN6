@@ -5,8 +5,9 @@ import { Subscription } from "rxjs";
 
 import { PostsService } from "../posts.service";
 import { Post } from "../post.model";
-import { mimeType } from "./mime-type.validator";
+import { mimeType } from "../../core/validators/mime-type.validator";
 import { AuthService } from "../../auth/auth.service";
+import { DialogService } from "../../core/services/dialog.service";
 
 @Component({
   selector: "app-post-create",
@@ -19,7 +20,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
   post: Post;
   isLoading = false;
   form: FormGroup;
-  imagePreview: string;
+  imagePreview: any;
   private mode = "create";
   private postId: string;
   private authStatusSub: Subscription;
@@ -29,6 +30,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
     public route: ActivatedRoute,
     private authService: AuthService,
     private router: Router,
+    private dialog: DialogService,
   ) {}
 
   ngOnInit() {
@@ -96,6 +98,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
         this.form.value.content,
         this.form.value.image
       ).subscribe(responseData => {
+        this.dialog.success();
         this.router.navigate(["/"]);
       }, (error) => {
         this.isLoading = false;
@@ -106,7 +109,10 @@ export class PostCreateComponent implements OnInit, OnDestroy {
         this.form.value.title,
         this.form.value.content,
         this.form.value.image
-      );
+      ) .subscribe(response => {
+        this.dialog.success();
+        this.router.navigate(["/"]);
+      });
     }
     this.form.reset();
   }

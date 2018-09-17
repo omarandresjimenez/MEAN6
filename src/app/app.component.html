@@ -1,5 +1,8 @@
 <app-header></app-header>
 <main>
+    <mat-progress-bar
+    *ngIf="loadingRouter" color="accent" mode="indeterminate">
+  </mat-progress-bar>
   <router-outlet></router-outlet>
 </main>
 <!-- <app-error *ngIf="hasError"></app-error> -->

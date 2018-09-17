@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
 import { StatisticsService } from "./statistics.service";
+import { DialogService } from "../core/services/dialog.service";
 
 
 
@@ -18,7 +19,8 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   private statsListenerSubs: Subscription;
   private data: any;
 
-  constructor(private statsService: StatisticsService) {}
+  constructor(private statsService: StatisticsService,
+              private dialog: DialogService) {}
 
   ngOnInit() {
     this.initChart();
@@ -59,6 +61,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   }
 onClick() {
   this.statsService.toogleConnection();
+  this.dialog.success('Suucesfully Toogled');
 }
 
   // public lineChartData: Array<any> = [

@@ -73,7 +73,7 @@ export class PostsService {
       );
   }
 
-  updatePost(id: string, title: string, content: string, image: File | string) {
+  updatePost(id: string, title: string, content: string, image: File | string):  Observable<any> {
     let postData: Post | FormData;
     if (typeof image === "object") {
       postData = new FormData();
@@ -90,11 +90,8 @@ export class PostsService {
         creator: null
       };
     }
-    this.http
-      .put(BACKEND_URL + id, postData)
-      .subscribe(response => {
-        this.router.navigate(["/"]);
-      });
+    return this.http
+      .put(BACKEND_URL + id, postData);
   }
 
   deletePost(postId: string) {

@@ -18,7 +18,12 @@
       <a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Signup</a>
     </li>
     <li *ngIf="userIsAuthenticated">
+      <div class="account-bar">
+      <span class="card-avatar" style="background-size: cover;"  *ngIf="userAvatar"
+      [ngStyle]="{'background-image': 'url(' + userAvatar + ')'}"></span>
+      <span>{{ userName }}</span>
       <button mat-button (click)="onLogout()">Logout</button>
+    </div>
     </li>
   </ul>
 </mat-toolbar>

@@ -4,10 +4,13 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 
 exports.createUser = (req, res, next) => {
+  const url = req.protocol + "://" + req.get("host");
   bcrypt.hash(req.body.password, 10).then(hash => {
     const user = new User({
       email: req.body.email,
-      password: hash
+      password: hash,
+      userName: req.body.userName,
+      userAvatar:  url + "/images/avatar/" + req.file.filename,
     });
     user
       .save()
@@ -51,10 +54,13 @@ exports.userLogin = (req, res, next) => {
       res.status(200).json({
         token: token,
         expiresIn: 30,
-        userId: fetchedUser._id
+        userId: fetchedUser._id,
+        userName: fetchedUser.userName,
+        userAvatar: fetchedUser.userAvatar
       });
     })
     .catch(err => {
+      console.log(err);
       return res.status(401).json({
         message: "Invalid authentication credentials!"
       });
