@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: "statistics", component: StatisticsComponent },
   { path: "create", component: PostCreateComponent, canActivate: [AuthGuard] },
   { path: "edit/:postId", component: PostCreateComponent, canActivate: [AuthGuard] },
-  { path: "auth", loadChildren: "./auth/auth.module#AuthModule"}
+  { path: "auth", loadChildren: "./auth/auth.module#AuthModule"},
+  { path: "grid", loadChildren: "./grid/grid.module#GridModule"},
 ];
 
 @NgModule({
