@@ -3,7 +3,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
-import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
@@ -13,10 +12,6 @@ import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { PostsModule } from './posts/posts.module';
-import { ChartLineComponent } from "./widgets/charts/linear-chart.component";
-import { ChartPieComponent } from "./widgets/charts/pie-chart.component";
-import { StatisticsComponent } from "./statistics/statistics.component";
-import { StatComponent } from "./statistics/stat1.component";
 
 
 @NgModule({
@@ -24,10 +19,6 @@ import { StatComponent } from "./statistics/stat1.component";
     AppComponent,
     HeaderComponent,
     ErrorComponent,
-    ChartLineComponent,
-    ChartPieComponent,
-    StatisticsComponent,
-    StatComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +27,6 @@ import { StatComponent } from "./statistics/stat1.component";
     HttpClientModule,
     AngularMaterialModule,
     PostsModule,
-    ChartsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
