@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   MatInputModule,
   MatCardModule,
@@ -9,6 +10,11 @@ import {
   MatPaginatorModule,
   MatDialogModule,
   MatProgressBarModule,
+  MatCheckboxModule,
+  MatIconModule,
+  MatMenuModule,
+  MatSidenavModule,
+  MatListModule,
 } from "@angular/material";
 
 @NgModule({
@@ -22,6 +28,12 @@ import {
     MatPaginatorModule,
     MatDialogModule,
     MatProgressBarModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatMenuModule,
+    MatSidenavModule,
+    FlexLayoutModule,
+    MatListModule,
   ]
 })
 export class AngularMaterialModule {}

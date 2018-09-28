@@ -28,7 +28,7 @@ export class StatisticsService implements OnDestroy, OnInit {
         .pipe()
         .subscribe((data: any) => {
           this.statisticsUpdated.next(data);
-        }); } , 500);
+        }); } , 1000);
   }
 
   getStatisticsUpdateListener() {

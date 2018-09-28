@@ -26,8 +26,8 @@ export class SignupComponent implements OnInit, OnDestroy {
       email: new FormControl(null, {
         validators: [Validators.required, Validators.email]
       }),
-      userName: new FormControl(null, { validators: [Validators.required] }),
-      password: new FormControl(null, { validators: [Validators.required, Validators.minLength(8)] }),
+      userN: new FormControl(null, { validators: [Validators.required] }),
+      mypassword: new FormControl(null, { validators: [Validators.required, Validators.minLength(6)] }),
       image: new FormControl(null, {
         validators: [Validators.required],
         asyncValidators: [mimeType]
@@ -51,7 +51,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       return;
     }
     this.isLoading = true;
-    this.authService.createUser(this.form.value.email, this.form.value.password, this.form.value.userName, this.form.value.image);
+    this.authService.createUser(this.form.value.email, this.form.value.mypassword, this.form.value.userN, this.form.value.image);
   }
 
   ngOnDestroy() {

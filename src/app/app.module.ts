@@ -13,12 +13,17 @@ import { ErrorComponent } from './error/error.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { PostsModule } from './posts/posts.module';
 
+import { MenuComponent } from "./header/menu/menu.component";
+import { AvatarComponent } from "./header/avatar/avatar.component";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ErrorComponent,
+    MenuComponent,
+    AvatarComponent,
   ],
   imports: [
     BrowserModule,
