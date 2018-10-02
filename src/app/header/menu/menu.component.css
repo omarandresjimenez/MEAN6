@@ -170,3 +170,17 @@ main {
   width: 80%;
   margin: 1rem auto;
 }
+
+
+.exit {
+    margin-left: 3px !important;
+    color: white !important;
+    margin-right: 0px !important;
+}
+
+@media all and (max-width: 400px) {
+  .hidemobile {
+    display: none;
+    visibility: hidden;
+  }
+}

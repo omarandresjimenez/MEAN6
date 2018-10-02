@@ -1,5 +1,6 @@
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <div style="display: block">
   <form (submit)="onSignup(signupForm)" [formGroup]="form" *ngIf="!isLoading" autocomplete="off">
     <mat-form-field>
       <input matInput type="email" formControlName="email" placeholder="E-Mail">
@@ -22,5 +23,6 @@
       <mat-error *ngIf="form.get('mypassword').invalid">Please enter a valid password.</mat-error>
     </mat-form-field>
     <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Signup</button>
-  </form> 
+  </form>
+</div> 
 </mat-card>
